@@ -1,12 +1,71 @@
 'use client';
 
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/lib/language';
+import { games } from '@/lib/data';
 
 export default function HeroBanner() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const [query, setQuery] = useState('');
+  const [showResults, setShowResults] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const chips = [t.hero.chip1, t.hero.chip2, t.hero.chip3, t.hero.chip4];
+
+  // Close results when clicking outside
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (resultsRef.current && !resultsRef.current.contains(e.target as Node)) {
+        setShowResults(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  // Search games and services
+  const getResults = () => {
+    if (!query.trim()) return [];
+    const q = query.toLowerCase();
+    const results: { type: 'game' | 'service'; game: typeof games[0]; service?: typeof games[0]['services'][0] }[] = [];
+
+    for (const game of games) {
+      const gameName = language === 'ja' ? game.nameJa : game.name;
+      const gameDesc = language === 'ja' ? game.descriptionJa : game.description;
+
+      if (gameName.toLowerCase().includes(q) || gameDesc.toLowerCase().includes(q)) {
+        results.push({ type: 'game', game });
+      }
+
+      for (const service of game.services) {
+        const sName = language === 'ja' ? service.nameJa : service.name;
+        const sDesc = language === 'ja' ? service.descriptionJa : service.description;
+        if (sName.toLowerCase().includes(q) || sDesc.toLowerCase().includes(q)) {
+          results.push({ type: 'service', game, service });
+        }
+      }
+    }
+
+    return results.slice(0, 8);
+  };
+
+  const results = getResults();
+
+  const handleChipClick = (chip: string) => {
+    setQuery(chip);
+    setShowResults(true);
+    inputRef.current?.focus();
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      setShowResults(true);
+    }
+  };
 
   const trustItems = [
     {
@@ -71,8 +130,9 @@ export default function HeroBanner() {
       </h1>
 
       {/* Search bar */}
-      <div className="relative w-full max-w-2xl mt-10 mb-6">
-        <div
+      <div className="relative w-full max-w-2xl mt-10 mb-6" ref={resultsRef}>
+        <form
+          onSubmit={handleSubmit}
           className="flex items-center bg-surface-elevated border border-accent/30 rounded-xl focus-within:border-accent transition-colors"
           style={{ boxShadow: '0 0 40px rgba(230,57,70,0.12)' }}
         >
@@ -80,31 +140,95 @@ export default function HeroBanner() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
+            ref={inputRef}
             type="text"
+            value={query}
+            onChange={(e) => { setQuery(e.target.value); setShowResults(true); }}
+            onFocus={() => { if (query.trim()) setShowResults(true); }}
             placeholder={t.hero.searchPlaceholder}
             className="flex-1 pl-4 pr-4 py-5 bg-transparent text-white placeholder-text-muted text-base md:text-lg focus:outline-none"
           />
-          <Link
-            href="/#games"
+          <button
+            type="submit"
             className="mr-2 bg-accent hover:bg-accent/85 text-white p-3 rounded-lg transition"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </Link>
-        </div>
+          </button>
+        </form>
+
+        {/* Search results dropdown */}
+        {showResults && query.trim() && (
+          <div className="absolute top-full left-0 right-0 mt-2 bg-surface-elevated border border-border rounded-xl shadow-2xl overflow-hidden z-50 max-h-96 overflow-y-auto">
+            {results.length > 0 ? (
+              results.map((r, i) => (
+                <Link
+                  key={`${r.game.id}-${r.service?.id || 'game'}-${i}`}
+                  href={`/${r.game.slug}`}
+                  onClick={() => setShowResults(false)}
+                  className="flex items-center gap-4 px-5 py-3 hover:bg-surface transition-colors border-b border-border last:border-0"
+                >
+                  <div className="relative w-12 h-8 rounded overflow-hidden flex-shrink-0">
+                    <Image
+                      src={r.game.image}
+                      alt={language === 'ja' ? r.game.nameJa : r.game.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="text-left flex-1 min-w-0">
+                    {r.type === 'game' ? (
+                      <>
+                        <div className="text-sm font-semibold text-white truncate">
+                          {language === 'ja' ? r.game.nameJa : r.game.name}
+                        </div>
+                        <div className="text-xs text-text-muted truncate">
+                          {r.game.services.length} {language === 'ja' ? 'サービス' : 'services'}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-sm font-semibold text-white truncate">
+                          {language === 'ja' ? r.service!.nameJa : r.service!.name}
+                        </div>
+                        <div className="text-xs text-text-muted truncate">
+                          {language === 'ja' ? r.game.nameJa : r.game.name} &middot; ${r.service!.priceUSD}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  <svg className="w-4 h-4 text-text-muted flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ))
+            ) : (
+              <div className="px-5 py-8 text-center">
+                <p className="text-text-muted text-sm">{t.errors.noResults}</p>
+                <Link
+                  href="/#games"
+                  onClick={() => setShowResults(false)}
+                  className="text-accent text-sm hover:underline mt-2 inline-block"
+                >
+                  {t.common.allGames ?? 'Browse all games'}
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Suggestion chips */}
       <div className="relative flex flex-wrap justify-center gap-2 mb-14">
         {chips.map((chip) => (
-          <Link
+          <button
             key={chip}
-            href="/#games"
+            onClick={() => handleChipClick(chip)}
             className="px-4 py-2 bg-surface-elevated border border-border rounded-full text-sm text-text-secondary hover:text-white hover:border-accent/50 transition"
           >
             {chip}
-          </Link>
+          </button>
         ))}
       </div>
 
