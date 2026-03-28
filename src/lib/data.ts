@@ -22,6 +22,67 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "dota-2",
+    name: "Dota 2",
+    nameJa: "Dota 2",
+    slug: "dota-2",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/570/library_600x900.jpg",
+    description: "Unlock your potential in Dota 2 with coaching from experienced players. From laning to drafting, our coaches help you understand the deep strategic layers of the game.",
+    descriptionJa: "経験豊富なプレイヤーのコーチングでDota 2のポテンシャルを解放。レーニングからドラフトまで、ゲームの深い戦略レイヤーの理解をサポートします。",
+    services: [
+      {
+        id: "dota2-hero-mastery",
+        name: "Hero Mastery Session",
+        nameJa: "ヒーローマスターセッション",
+        description: "Focus on mastering a specific hero: optimal skill builds, item timings, power spikes, and matchup knowledge to play your hero at a higher level.",
+        descriptionJa: "特定のヒーローの習得に集中：最適なスキルビルド、アイテムタイミング、パワースパイク、マッチアップ知識で、より高いレベルでプレイしましょう。",
+        priceUSD: 24.99,
+        delivery: "1 hour session",
+        deliveryJa: "1時間のセッション"
+      },
+      {
+        id: "dota2-laning-breakdown",
+        name: "Laning Phase Breakdown",
+        nameJa: "レーニングフェーズブレイクダウン",
+        description: "Master the first 10 minutes: creep equilibrium, trading, pulling, stacking, and securing farm while denying your opponent's resources.",
+        descriptionJa: "最初の10分をマスター：クリープの均衡、トレード、プル、スタック、ファームの確保と相手のリソース妨害を学びましょう。",
+        priceUSD: 22.99,
+        delivery: "1 hour session",
+        deliveryJa: "1時間のセッション"
+      },
+      {
+        id: "dota2-draft-analysis",
+        name: "Draft Analysis & Strategy",
+        nameJa: "ドラフト分析＆戦略",
+        description: "Learn how to read drafts, identify win conditions, counter-pick effectively, and build team compositions that synergize for victory.",
+        descriptionJa: "ドラフトの読み方、勝利条件の特定、効果的なカウンターピック、勝利に向けたチーム構成の構築方法を学びましょう。",
+        priceUSD: 29.99,
+        delivery: "1 hour session",
+        deliveryJa: "1時間のセッション"
+      },
+      {
+        id: "dota2-replay-analysis",
+        name: "Replay Analysis (3 Games)",
+        nameJa: "リプレイ分析（3試合）",
+        description: "Submit 3 of your recent replays and receive detailed analysis covering your decision-making, positioning, itemization, and key turning points in each game.",
+        descriptionJa: "最近の3試合のリプレイを提出し、意思決定、ポジショニング、アイテム選択、各試合の重要なターニングポイントについて詳細な分析を受けましょう。",
+        priceUSD: 34.99,
+        delivery: "90 min session",
+        deliveryJa: "90分のセッション"
+      },
+      {
+        id: "dota2-role-training",
+        name: "Support/Carry Role Training",
+        nameJa: "サポート/キャリーロールトレーニング",
+        description: "Role-specific coaching tailored to your position. Carries learn farming patterns and fight timing; supports learn warding, rotations, and resource management.",
+        descriptionJa: "ポジションに特化したロール別コーチング。キャリーはファーミングパターンと戦闘タイミングを、サポートはワード、ローテーション、リソース管理を学びます。",
+        priceUSD: 27.99,
+        delivery: "1 hour session",
+        deliveryJa: "1時間のセッション"
+      }
+    ]
+  },
+  {
     id: "league-of-legends",
     name: "League of Legends",
     nameJa: "リーグ・オブ・レジェンド",
@@ -93,67 +154,6 @@ export const games: Game[] = [
     ]
   },
   {
-    id: "dota-2",
-    name: "Dota 2",
-    nameJa: "Dota 2",
-    slug: "dota-2",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/570/library_600x900.jpg",
-    description: "Unlock your potential in Dota 2 with coaching from experienced players. From laning to drafting, our coaches help you understand the deep strategic layers of the game.",
-    descriptionJa: "経験豊富なプレイヤーのコーチングでDota 2のポテンシャルを解放。レーニングからドラフトまで、ゲームの深い戦略レイヤーの理解をサポートします。",
-    services: [
-      {
-        id: "dota2-hero-mastery",
-        name: "Hero Mastery Session",
-        nameJa: "ヒーローマスターセッション",
-        description: "Focus on mastering a specific hero: optimal skill builds, item timings, power spikes, and matchup knowledge to play your hero at a higher level.",
-        descriptionJa: "特定のヒーローの習得に集中：最適なスキルビルド、アイテムタイミング、パワースパイク、マッチアップ知識で、より高いレベルでプレイしましょう。",
-        priceUSD: 24.99,
-        delivery: "1 hour session",
-        deliveryJa: "1時間のセッション"
-      },
-      {
-        id: "dota2-laning-breakdown",
-        name: "Laning Phase Breakdown",
-        nameJa: "レーニングフェーズブレイクダウン",
-        description: "Master the first 10 minutes: creep equilibrium, trading, pulling, stacking, and securing farm while denying your opponent's resources.",
-        descriptionJa: "最初の10分をマスター：クリープの均衡、トレード、プル、スタック、ファームの確保と相手のリソース妨害を学びましょう。",
-        priceUSD: 22.99,
-        delivery: "1 hour session",
-        deliveryJa: "1時間のセッション"
-      },
-      {
-        id: "dota2-draft-analysis",
-        name: "Draft Analysis & Strategy",
-        nameJa: "ドラフト分析＆戦略",
-        description: "Learn how to read drafts, identify win conditions, counter-pick effectively, and build team compositions that synergize for victory.",
-        descriptionJa: "ドラフトの読み方、勝利条件の特定、効果的なカウンターピック、勝利に向けたチーム構成の構築方法を学びましょう。",
-        priceUSD: 29.99,
-        delivery: "1 hour session",
-        deliveryJa: "1時間のセッション"
-      },
-      {
-        id: "dota2-replay-analysis",
-        name: "Replay Analysis (3 Games)",
-        nameJa: "リプレイ分析（3試合）",
-        description: "Submit 3 of your recent replays and receive detailed analysis covering your decision-making, positioning, itemization, and key turning points in each game.",
-        descriptionJa: "最近の3試合のリプレイを提出し、意思決定、ポジショニング、アイテム選択、各試合の重要なターニングポイントについて詳細な分析を受けましょう。",
-        priceUSD: 34.99,
-        delivery: "90 min session",
-        deliveryJa: "90分のセッション"
-      },
-      {
-        id: "dota2-role-training",
-        name: "Support/Carry Role Training",
-        nameJa: "サポート/キャリーロールトレーニング",
-        description: "Role-specific coaching tailored to your position. Carries learn farming patterns and fight timing; supports learn warding, rotations, and resource management.",
-        descriptionJa: "ポジションに特化したロール別コーチング。キャリーはファーミングパターンと戦闘タイミングを、サポートはワード、ローテーション、リソース管理を学びます。",
-        priceUSD: 27.99,
-        delivery: "1 hour session",
-        deliveryJa: "1時間のセッション"
-      }
-    ]
-  },
-  {
     id: "counter-strike-2",
     name: "Counter-Strike 2",
     nameJa: "カウンターストライク2",
@@ -219,7 +219,7 @@ export const games: Game[] = [
     name: "Valorant",
     nameJa: "ヴァロラント",
     slug: "valorant",
-    image: "",
+    image: "https://images.igdb.com/igdb/image/upload/t_1080p/co2mvt.jpg",
     description: "Sharpen your aim, refine your agent play, and develop winning strategies with expert Valorant coaches. From crosshair placement to map control, we cover it all.",
     descriptionJa: "エイムを磨き、エージェントプレイを洗練させ、専門のヴァロラントコーチと勝利戦略を構築。クロスヘア配置からマップコントロールまで、すべてをカバーします。",
     services: [
@@ -341,7 +341,7 @@ export const games: Game[] = [
     name: "Fortnite",
     nameJa: "フォートナイト",
     slug: "fortnite",
-    image: "",
+    image: "https://images.igdb.com/igdb/image/upload/t_1080p/co2ekt.jpg",
     description: "Level up your Fortnite skills with coaching that covers building, editing, game sense, and competitive strategy. Learn to outplay opponents and dominate Arena matches.",
     descriptionJa: "建築、編集、ゲームセンス、競技戦略をカバーするコーチングでフォートナイトのスキルをレベルアップ。対戦相手を出し抜き、アリーナマッチを支配しましょう。",
     services: [
@@ -463,7 +463,7 @@ export const games: Game[] = [
     name: "Overwatch 2",
     nameJa: "オーバーウォッチ2",
     slug: "overwatch-2",
-    image: "",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2357570/header.jpg",
     description: "Climb the competitive ladder with personalized Overwatch 2 coaching. Whether you play Tank, DPS, or Support, our coaches tailor sessions to your role and hero pool.",
     descriptionJa: "パーソナライズされたオーバーウォッチ2コーチングで競技ラダーを上昇。タンク、DPS、サポートのどのロールでも、あなたのロールとヒーロープールに合わせたセッションを提供します。",
     services: [

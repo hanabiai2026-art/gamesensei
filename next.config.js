@@ -18,6 +18,11 @@ const nextConfig = {
         hostname: 'ddragon.leagueoflegends.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.igdb.com',
+        pathname: '/**',
+      },
     ],
   },
 };

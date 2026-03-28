@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import { Rajdhani } from 'next/font/google'
+import { Chakra_Petch } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 
-const font = Rajdhani({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
+const font = Chakra_Petch({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
 
 export const metadata: Metadata = {
   title: 'GameSensei - Professional Game Coaching',

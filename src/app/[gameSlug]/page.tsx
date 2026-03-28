@@ -52,62 +52,56 @@ export default function GamePage({ params }: { params: { gameSlug: string } }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      {/* Side-by-side Hero */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        {/* Left: Game image */}
-        <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-surface border border-border">
-          {game.image ? (
-            <img
-              src={game.image}
-              alt={gameName}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-accent/20 via-surface to-accent-secondary/20 flex items-center justify-center">
-              <span className="text-4xl font-bold text-text-primary">{gameName}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Right: Game info & stats */}
-        <div className="flex flex-col justify-center">
-          <h1 className="text-4xl font-bold text-white mb-4">{gameName}</h1>
-          <p className="text-text-secondary text-base leading-relaxed mb-8">{gameDesc}</p>
-
-          {/* Stats grid */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="bg-surface border border-border rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-accent mb-1">{coachCount}+</div>
-              <div className="text-text-muted text-xs">{t.service.coachesAvailable}</div>
-            </div>
-            <div className="bg-surface border border-border rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-accent-secondary mb-1">{game.services.length}</div>
-              <div className="text-text-muted text-xs">{t.service.servicesOffered}</div>
-            </div>
-            <div className="bg-surface border border-border rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-green-400 mb-1">{formatPrice(lowestPrice)}</div>
-              <div className="text-text-muted text-xs">{t.service.startingAt}</div>
-            </div>
+    <div>
+      {/* Full-width banner hero */}
+      <div className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+        {game.image ? (
+          <img
+            src={game.image}
+            alt={gameName}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-accent/20 via-surface to-accent-secondary/20 flex items-center justify-center">
+            <span className="text-5xl font-bold text-text-primary">{gameName}</span>
           </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent" />
 
-          <Link
-            href="#services"
-            className="inline-flex items-center justify-center bg-accent text-white font-bold py-3 px-6 rounded-lg hover:brightness-110 transition-all text-sm w-fit"
-          >
-            {t.service.availableServices}
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
+        {/* Overlay content */}
+        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 pb-8">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">{gameName}</h1>
+          <p className="text-text-secondary text-sm md:text-base max-w-2xl line-clamp-2">{gameDesc}</p>
         </div>
       </div>
 
-      {/* Service Listing - Table/Row style */}
-      <div id="services">
+      {/* Stats bar */}
+      <div className="bg-surface border-y border-border">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-center gap-8 md:gap-16">
+            <div className="text-center">
+              <div className="text-xl md:text-2xl font-bold text-accent">{coachCount}+</div>
+              <div className="text-text-muted text-xs">{t.service.coachesAvailable}</div>
+            </div>
+            <div className="w-px h-10 bg-border" />
+            <div className="text-center">
+              <div className="text-xl md:text-2xl font-bold text-accent-secondary">{game.services.length}</div>
+              <div className="text-text-muted text-xs">{t.service.servicesOffered}</div>
+            </div>
+            <div className="w-px h-10 bg-border" />
+            <div className="text-center">
+              <div className="text-xl md:text-2xl font-bold text-green-400">{formatPrice(lowestPrice)}</div>
+              <div className="text-text-muted text-xs">{t.service.startingAt}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Service Cards Grid */}
+      <div className="max-w-7xl mx-auto px-4 py-10">
         <h2 className="text-2xl font-bold text-white mb-6">{t.service.availableServices}</h2>
 
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {game.services.map((service) => {
             const serviceName = language === 'ja' ? service.nameJa : service.name
             const serviceDesc = language === 'ja' ? service.descriptionJa : service.description
@@ -116,18 +110,14 @@ export default function GamePage({ params }: { params: { gameSlug: string } }) {
             return (
               <div
                 key={service.id}
-                className="relative bg-surface border border-border rounded-lg p-4 md:p-5 hover:border-accent/40 transition-colors flex flex-col md:flex-row md:items-center gap-4"
+                className="relative bg-surface border border-border rounded-xl p-5 hover:border-accent/40 transition-colors flex flex-col"
               >
-                {/* Left: Name & description */}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-bold text-text-primary mb-1">{serviceName}</h3>
-                  <p className="text-text-secondary text-sm line-clamp-2">{serviceDesc}</p>
-                </div>
+                <h3 className="text-lg font-bold text-text-primary mb-2">{serviceName}</h3>
+                <p className="text-text-secondary text-sm mb-4 flex-1">{serviceDesc}</p>
 
-                {/* Right: Price, delivery, CTA */}
-                <div className="flex items-center gap-4 md:gap-6 shrink-0">
-                  <div className="text-right">
-                    <div className="text-accent text-lg font-bold">{formatPrice(service.priceUSD)}</div>
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
+                  <div>
+                    <div className="text-accent text-xl font-bold">{formatPrice(service.priceUSD)}</div>
                     <div className="text-text-muted text-xs">{deliveryText}</div>
                   </div>
                   <button
