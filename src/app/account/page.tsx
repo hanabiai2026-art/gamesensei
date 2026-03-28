@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/auth'
 import { useLanguage } from '@/lib/language'
@@ -9,9 +9,10 @@ export default function AccountPage() {
   const { user, isSignedIn, signOut } = useAuth()
   const { t } = useLanguage()
   const router = useRouter()
+  const signingOutRef = useRef(false)
 
   useEffect(() => {
-    if (!isSignedIn) {
+    if (!isSignedIn && !signingOutRef.current) {
       router.push('/account/signin')
     }
   }, [isSignedIn, router])
@@ -54,6 +55,7 @@ export default function AccountPage() {
       {/* Sign Out */}
       <button
         onClick={() => {
+          signingOutRef.current = true
           signOut()
           router.push('/')
         }}

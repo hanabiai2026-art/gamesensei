@@ -31,9 +31,10 @@ export default function Footer() {
             <h3 className="text-text-primary font-bold text-sm mb-4">{t.footer.company}</h3>
             <ul className="space-y-2">
               <li><Link href="/about" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.aboutUs}</Link></li>
-              <li><Link href="/coming-soon/blog" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.blog}</Link></li>
-              <li><Link href="/coming-soon/careers" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.workWithUs}</Link></li>
-              <li><Link href="/coming-soon/guarantees" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.guarantees}</Link></li>
+              <li><Link href="/contact" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.contactUs}</Link></li>
+              <li><a href="/coming-soon/blog" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.blog}</a></li>
+              <li><a href="/coming-soon/careers" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.workWithUs}</a></li>
+              <li><a href="/coming-soon/guarantees" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.guarantees}</a></li>
             </ul>
           </div>
 

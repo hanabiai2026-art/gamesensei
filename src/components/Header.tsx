@@ -34,12 +34,19 @@ export default function Header() {
   });
 
   return (
-    <header className="sticky top-0 z-50 bg-surface-elevated border-b border-border">
+    <header className="sticky top-0 z-50 bg-bg/95 backdrop-blur border-b border-border">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center gap-4">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 text-xl font-bold tracking-tight">
-          <span className="text-text-primary">Game</span>
-          <span className="text-accent-secondary">Sensei</span>
+        <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
+          {/* Shuriken icon */}
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+            <path d="M16 2L20 12H30L22 18L25 28L16 22L7 28L10 18L2 12H12L16 2Z" className="fill-accent" />
+            <path d="M16 8L18.5 14H25L19.5 17.5L21.5 24L16 20.5L10.5 24L12.5 17.5L7 14H13.5L16 8Z" className="fill-bg" />
+          </svg>
+          <span className="text-xl font-extrabold tracking-widest uppercase">
+            <span className="text-white">GAME</span>
+            <span className="text-accent">SENSEI</span>
+          </span>
         </Link>
 
         {/* Games Dropdown */}

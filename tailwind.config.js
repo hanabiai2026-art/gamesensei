@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: '#0a0a12',
-        surface: '#12121f',
-        'surface-elevated': '#1a1a2e',
-        border: '#1e1e35',
+        bg: '#0a0b14',
+        surface: '#0f1020',
+        'surface-elevated': '#161728',
+        border: '#1e2035',
         accent: '#3b82f6',
         'accent-secondary': '#f59e0b',
         success: '#22c55e',

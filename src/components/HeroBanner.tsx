@@ -6,34 +6,118 @@ import { useLanguage } from '@/lib/language';
 export default function HeroBanner() {
   const { t } = useLanguage();
 
+  const chips = [t.hero.chip1, t.hero.chip2, t.hero.chip3, t.hero.chip4];
+
+  const trustItems = [
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      label: t.hero.trust1,
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      ),
+      label: t.hero.trust2,
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      label: t.hero.trust3,
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
+      label: t.hero.trust4,
+    },
+  ];
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-bg via-surface to-bg">
-      {/* Decorative coaching-themed accents */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-accent rotate-12" />
-        <div className="absolute top-0 right-1/3 w-px h-full bg-accent-secondary -rotate-12" />
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 rounded-full bg-accent/10 blur-3xl -translate-x-1/2 translate-y-1/2" />
-        <div className="absolute top-0 right-1/4 w-64 h-64 rounded-full bg-accent-secondary/10 blur-3xl" />
+    <section className="relative overflow-hidden bg-bg flex flex-col items-center justify-center min-h-[82vh] py-16 px-4 text-center">
+      {/* Background glows */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-r from-accent/6 to-transparent" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-900/8 to-transparent" />
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[140px]" />
+        <div className="absolute bottom-0 right-1/3 w-[400px] h-[400px] rounded-full bg-indigo-600/5 blur-[120px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-24 md:py-36 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold text-text-primary mb-6 leading-tight tracking-tight">
-          {t.hero.headline}
-        </h1>
-        <div className="w-24 h-1 bg-gradient-to-r from-accent to-accent-secondary mx-auto mb-6" />
-        <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10">
-          {t.hero.subtitle}
-        </p>
-        <Link
-          href="/#games"
-          className="inline-block bg-accent text-white font-bold px-8 py-3.5 rounded-lg text-lg hover:brightness-110 transition-all transform hover:scale-105"
+      {/* Trust badge */}
+      <div className="relative mb-8 flex items-center gap-2 bg-surface-elevated border border-border rounded-full px-5 py-2 text-sm">
+        <span className="text-text-secondary">{t.hero.excellent}</span>
+        <span className="text-success flex gap-0.5">★★★★★</span>
+        <span className="font-bold text-white">4.9</span>
+        <span className="text-text-muted">{t.hero.trustBadge}</span>
+      </div>
+
+      {/* Main headline */}
+      <h1 className="relative text-5xl md:text-7xl font-extrabold leading-tight mb-4 max-w-4xl">
+        {t.hero.headline}
+        <br />
+        <span className="text-accent">{t.hero.headlineBrand}</span>
+        {' '}
+        <span className="text-white">{t.hero.headlineSuffix}</span>
+      </h1>
+
+      {/* Search bar */}
+      <div className="relative w-full max-w-2xl mt-10 mb-6">
+        <div
+          className="flex items-center bg-surface-elevated border border-accent/30 rounded-xl focus-within:border-accent transition-colors"
+          style={{ boxShadow: '0 0 40px rgba(230,57,70,0.12)' }}
         >
-          {t.hero.cta}
-        </Link>
-        <p className="mt-8 text-text-muted text-sm flex items-center justify-center gap-2">
-          <svg className="w-4 h-4 text-accent-secondary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-          {t.hero.trustBadge}
-        </p>
+          <svg className="ml-5 w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            placeholder={t.hero.searchPlaceholder}
+            className="flex-1 pl-4 pr-4 py-5 bg-transparent text-white placeholder-text-muted text-base md:text-lg focus:outline-none"
+          />
+          <Link
+            href="/#games"
+            className="mr-2 bg-accent hover:bg-accent/85 text-white p-3 rounded-lg transition"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* Suggestion chips */}
+      <div className="relative flex flex-wrap justify-center gap-2 mb-14">
+        {chips.map((chip) => (
+          <Link
+            key={chip}
+            href="/#games"
+            className="px-4 py-2 bg-surface-elevated border border-border rounded-full text-sm text-text-secondary hover:text-white hover:border-accent/50 transition"
+          >
+            {chip}
+          </Link>
+        ))}
+      </div>
+
+      {/* Trust icons row */}
+      <div className="relative flex flex-wrap justify-center gap-8 md:gap-12 text-sm text-text-muted">
+        {trustItems.map((item) => (
+          <div key={item.label} className="flex flex-col items-center gap-2">
+            <div className="w-12 h-12 rounded-lg bg-surface-elevated border border-border flex items-center justify-center text-text-secondary">
+              {item.icon}
+            </div>
+            <span>{item.label}</span>
+          </div>
+        ))}
       </div>
     </section>
   );
