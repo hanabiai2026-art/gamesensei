@@ -29,8 +29,8 @@ export const translations = {
       step4: 'Level Up Your Skills',
       step4Desc: 'Apply what you learned, track your progress, and climb the ranks.',
     },
-    gameCard: { viewServices: 'View Services', startingFrom: 'From' },
-    service: { addToCart: 'Add to Cart', delivery: 'Delivery', addedToCart: 'Added to cart!' },
+    gameCard: { viewServices: 'View Services', startingFrom: 'From', services: 'services', coaches: 'coaches available', featuredGames: 'Featured Games', exploreServices: 'Explore Services' },
+    service: { addToCart: 'Add to Cart', delivery: 'Delivery', addedToCart: 'Added to cart!', availableServices: 'Available Services', startingAt: 'Starting at', coachesAvailable: 'Coaches Available', servicesOffered: 'Services Offered' },
     cart: {
       title: 'Shopping Cart',
       empty: 'Your cart is empty',
@@ -162,6 +162,64 @@ export const translations = {
       delivery: 'Delivery Policy',
       refund: 'Refund Policy',
     },
+    faq: {
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything you need to know about our coaching services.',
+      items: [
+        {
+          q: 'What is GameSensei?',
+          a: 'GameSensei is a professional game coaching platform that connects players with verified, high-ranked coaches for personalized 1-on-1 training sessions. Whether you want to improve your mechanics, game sense, or climb the ranked ladder, our coaches create custom training plans tailored to your goals.',
+        },
+        {
+          q: 'How does coaching work?',
+          a: 'After purchasing a coaching session, you will be matched with your chosen coach and receive scheduling details via email. Sessions are conducted live through Discord (voice + screen share) or in-game alongside your coach. Your coach will analyze your gameplay in real time, identify areas for improvement, and provide actionable feedback.',
+        },
+        {
+          q: 'What games do you support?',
+          a: 'We support a wide range of popular competitive titles including Valorant, League of Legends, Apex Legends, Overwatch 2, Fortnite, Counter-Strike 2, Dota 2, Rocket League, and more. Check our Games page for the full list of supported titles and available coaches.',
+        },
+        {
+          q: 'How are coaching sessions delivered?',
+          a: 'Sessions are delivered via Discord (voice chat + screen share), direct in-game coaching, or VOD review depending on the service you select. Most live sessions use Discord so your coach can watch your gameplay in real time and provide immediate guidance. VOD reviews are delivered as recorded video feedback you can watch at your own pace.',
+        },
+        {
+          q: 'How long are coaching sessions?',
+          a: 'Session lengths vary by the package you choose. Standard sessions are typically 1 hour, but we also offer 30-minute quickfire sessions and extended 2-hour deep-dive sessions. Multi-session bundles are available at a discount for players committed to long-term improvement.',
+        },
+        {
+          q: 'Can I reschedule or cancel a session?',
+          a: 'Yes. You can reschedule a session up to 12 hours before the scheduled start time at no extra cost. Cancellations made more than 24 hours in advance are eligible for a full refund. For cancellations within 24 hours, please contact our support team and we will do our best to accommodate you.',
+        },
+        {
+          q: 'What skill level do I need to be?',
+          a: 'All skill levels are welcome \u2014 from complete beginners to advanced players looking to break into the highest ranks. Our coaches tailor every session to your current ability and goals. You do not need any minimum rank or experience to benefit from coaching.',
+        },
+        {
+          q: 'How should I prepare for a coaching session?',
+          a: 'Make sure you have Discord installed and your game ready to play. If you purchased a VOD review, have your replay file or video link ready to share. It helps to think about specific areas you want to improve (e.g., aim, positioning, decision-making) so your coach can focus the session effectively.',
+        },
+        {
+          q: 'Are your coaches verified?',
+          a: 'Absolutely. Every GameSensei coach goes through a rigorous vetting process. We verify their in-game rank (Diamond+ or equivalent), competitive experience, and coaching ability. Coaches also receive ongoing reviews from students, and we maintain a minimum 4.5-star rating requirement to stay on the platform.',
+        },
+        {
+          q: 'What payment methods do you accept?',
+          a: 'We accept all major credit and debit cards (Visa, Mastercard, American Express) as well as PayPal. All transactions are processed through secure, encrypted payment systems. Prices are displayed in USD and JPY.',
+        },
+        {
+          q: 'Do you offer refunds?',
+          a: 'Yes. If your coaching session has not yet been delivered, you are eligible for a full refund. If you are unsatisfied with a completed session, please contact us within 48 hours and we will review your case. Our goal is to ensure every player has a positive experience. See our Refund Policy for full details.',
+        },
+        {
+          q: 'Can I choose my own coach?',
+          a: 'Yes! You can browse coach profiles on each game page, view their rank, specialties, reviews, and availability, and select the coach that best fits your needs. If you are unsure, our support team can recommend a coach based on your goals and playstyle.',
+        },
+        {
+          q: 'Do you offer team or group coaching?',
+          a: 'Yes, we offer group coaching sessions for teams of 2\u20135 players. Team sessions focus on communication, coordination, strategy, and team-based mechanics. Group rates are available \u2014 check individual game pages for team coaching packages or contact us for a custom quote.',
+        },
+      ],
+    },
   },
   ja: {
     header: {
@@ -193,8 +251,8 @@ export const translations = {
       step4: '\u30b9\u30ad\u30eb\u30a2\u30c3\u30d7',
       step4Desc: '\u5b66\u3093\u3060\u3053\u3068\u3092\u5b9f\u8df5\u3057\u3001\u9032\u6b69\u3092\u8ffd\u8de1\u3057\u3001\u30e9\u30f3\u30af\u3092\u99c6\u3051\u4e0a\u304c\u308a\u307e\u3057\u3087\u3046\u3002',
     },
-    gameCard: { viewServices: '\u30b5\u30fc\u30d3\u30b9\u3092\u898b\u308b', startingFrom: '\u4fa1\u683c' },
-    service: { addToCart: '\u30ab\u30fc\u30c8\u306b\u8ffd\u52a0', delivery: '\u914d\u9001', addedToCart: '\u30ab\u30fc\u30c8\u306b\u8ffd\u52a0\u3057\u307e\u3057\u305f\uff01' },
+    gameCard: { viewServices: '\u30b5\u30fc\u30d3\u30b9\u3092\u898b\u308b', startingFrom: '\u4fa1\u683c', services: '\u30b5\u30fc\u30d3\u30b9', coaches: '\u540d\u306e\u30b3\u30fc\u30c1\u304c\u5bfe\u5fdc', featuredGames: '\u6ce8\u76ee\u306e\u30b2\u30fc\u30e0', exploreServices: '\u30b5\u30fc\u30d3\u30b9\u3092\u63a2\u3059' },
+    service: { addToCart: '\u30ab\u30fc\u30c8\u306b\u8ffd\u52a0', delivery: '\u914d\u9001', addedToCart: '\u30ab\u30fc\u30c8\u306b\u8ffd\u52a0\u3057\u307e\u3057\u305f\uff01', availableServices: '\u5229\u7528\u53ef\u80fd\u306a\u30b5\u30fc\u30d3\u30b9', startingAt: '\u6700\u4f4e\u4fa1\u683c', coachesAvailable: '\u5bfe\u5fdc\u53ef\u80fd\u306a\u30b3\u30fc\u30c1', servicesOffered: '\u63d0\u4f9b\u30b5\u30fc\u30d3\u30b9\u6570' },
     cart: {
       title: '\u30b7\u30e7\u30c3\u30d4\u30f3\u30b0\u30ab\u30fc\u30c8',
       empty: '\u30ab\u30fc\u30c8\u306f\u7a7a\u3067\u3059',
@@ -325,6 +383,64 @@ export const translations = {
       privacy: '\u500b\u4eba\u60c5\u5831\u4fdd\u8b77\u65b9\u91dd',
       delivery: '\u914d\u9001\u30dd\u30ea\u30b7\u30fc',
       refund: '\u8fd4\u91d1\u30dd\u30ea\u30b7\u30fc',
+    },
+    faq: {
+      title: '\u3088\u304f\u3042\u308b\u8cea\u554f',
+      subtitle: '\u30b3\u30fc\u30c1\u30f3\u30b0\u30b5\u30fc\u30d3\u30b9\u306b\u3064\u3044\u3066\u77e5\u3063\u3066\u304a\u304d\u305f\u3044\u3053\u3068\u3002',
+      items: [
+        {
+          q: 'GameSensei\u3068\u306f\u4f55\u3067\u3059\u304b\uff1f',
+          a: 'GameSensei\u306f\u3001\u30d7\u30ec\u30a4\u30e4\u30fc\u3068\u8a8d\u5b9a\u6e08\u307f\u306e\u9ad8\u30e9\u30f3\u30af\u30b3\u30fc\u30c1\u3092\u3064\u306a\u3050\u30d7\u30ed\u30d5\u30a7\u30c3\u30b7\u30e7\u30ca\u30eb\u306a\u30b2\u30fc\u30e0\u30b3\u30fc\u30c1\u30f3\u30b0\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u3067\u3059\u3002\u64cd\u4f5c\u6280\u8853\u3001\u30b2\u30fc\u30e0\u30bb\u30f3\u30b9\u3001\u30e9\u30f3\u30af\u30a2\u30c3\u30d7\u306a\u3069\u3001\u304a\u5ba2\u69d8\u306e\u76ee\u6a19\u306b\u5408\u308f\u305b\u305f\u30d1\u30fc\u30bd\u30ca\u30e9\u30a4\u30ba\u30c91\u5bfe1\u30c8\u30ec\u30fc\u30cb\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u63d0\u4f9b\u3057\u307e\u3059\u3002',
+        },
+        {
+          q: '\u30b3\u30fc\u30c1\u30f3\u30b0\u306f\u3069\u306e\u3088\u3046\u306b\u884c\u308f\u308c\u307e\u3059\u304b\uff1f',
+          a: '\u30b3\u30fc\u30c1\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u8cfc\u5165\u5f8c\u3001\u9078\u3093\u3060\u30b3\u30fc\u30c1\u3068\u30de\u30c3\u30c1\u30f3\u30b0\u3055\u308c\u3001\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u306e\u8a73\u7d30\u304c\u30e1\u30fc\u30eb\u3067\u5c4a\u304d\u307e\u3059\u3002\u30bb\u30c3\u30b7\u30e7\u30f3\u306fDiscord\uff08\u97f3\u58f0+\u753b\u9762\u5171\u6709\uff09\u307e\u305f\u306f\u30b2\u30fc\u30e0\u5185\u3067\u30e9\u30a4\u30d6\u3067\u884c\u308f\u308c\u307e\u3059\u3002\u30b3\u30fc\u30c1\u304c\u30ea\u30a2\u30eb\u30bf\u30a4\u30e0\u3067\u30b2\u30fc\u30e0\u30d7\u30ec\u30a4\u3092\u5206\u6790\u3057\u3001\u6539\u5584\u70b9\u3092\u7279\u5b9a\u3057\u3001\u5b9f\u884c\u53ef\u80fd\u306a\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af\u3092\u63d0\u4f9b\u3057\u307e\u3059\u3002',
+        },
+        {
+          q: '\u3069\u306e\u30b2\u30fc\u30e0\u306b\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u3059\u304b\uff1f',
+          a: 'Valorant\u3001League of Legends\u3001Apex Legends\u3001Overwatch 2\u3001Fortnite\u3001Counter-Strike 2\u3001Dota 2\u3001Rocket League\u306a\u3069\u3001\u4eba\u6c17\u306e\u7af6\u6280\u30bf\u30a4\u30c8\u30eb\u3092\u5e45\u5e83\u304f\u30b5\u30dd\u30fc\u30c8\u3057\u3066\u3044\u307e\u3059\u3002\u5bfe\u5fdc\u30bf\u30a4\u30c8\u30eb\u3068\u30b3\u30fc\u30c1\u306e\u5168\u30ea\u30b9\u30c8\u306f\u30b2\u30fc\u30e0\u30da\u30fc\u30b8\u3092\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002',
+        },
+        {
+          q: '\u30b3\u30fc\u30c1\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u306f\u3069\u306e\u3088\u3046\u306b\u63d0\u4f9b\u3055\u308c\u307e\u3059\u304b\uff1f',
+          a: '\u30bb\u30c3\u30b7\u30e7\u30f3\u306fDiscord\uff08\u30dc\u30a4\u30b9\u30c1\u30e3\u30c3\u30c8+\u753b\u9762\u5171\u6709\uff09\u3001\u30b2\u30fc\u30e0\u5185\u30b3\u30fc\u30c1\u30f3\u30b0\u3001\u307e\u305f\u306fVOD\u30ec\u30d3\u30e5\u30fc\u3067\u63d0\u4f9b\u3055\u308c\u307e\u3059\u3002\u307b\u3068\u3093\u3069\u306e\u30e9\u30a4\u30d6\u30bb\u30c3\u30b7\u30e7\u30f3\u3067\u306fDiscord\u3092\u4f7f\u7528\u3057\u3001\u30b3\u30fc\u30c1\u304c\u30ea\u30a2\u30eb\u30bf\u30a4\u30e0\u3067\u30b2\u30fc\u30e0\u30d7\u30ec\u30a4\u3092\u89b3\u5bdf\u3057\u5373\u5ea7\u306b\u30a2\u30c9\u30d0\u30a4\u30b9\u3057\u307e\u3059\u3002VOD\u30ec\u30d3\u30e5\u30fc\u306f\u9332\u753b\u3055\u308c\u305f\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af\u52d5\u753b\u3068\u3057\u3066\u304a\u5c4a\u3051\u3057\u307e\u3059\u3002',
+        },
+        {
+          q: '\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u6642\u9593\u306f\u3069\u306e\u304f\u3089\u3044\u3067\u3059\u304b\uff1f',
+          a: '\u30d1\u30c3\u30b1\u30fc\u30b8\u306b\u3088\u308a\u7570\u306a\u308a\u307e\u3059\u3002\u6a19\u6e96\u30bb\u30c3\u30b7\u30e7\u30f3\u306f\u901a\u5e381\u6642\u9593\u3067\u3059\u304c\u300130\u5206\u306e\u30af\u30a4\u30c3\u30af\u30bb\u30c3\u30b7\u30e7\u30f3\u30842\u6642\u9593\u306e\u5fb9\u5e95\u30bb\u30c3\u30b7\u30e7\u30f3\u3082\u3054\u7528\u610f\u3057\u3066\u3044\u307e\u3059\u3002\u9577\u671f\u7684\u306a\u4e0a\u9054\u3092\u76ee\u6307\u3059\u65b9\u306b\u306f\u3001\u304a\u5f97\u306a\u8907\u6570\u30bb\u30c3\u30b7\u30e7\u30f3\u30d0\u30f3\u30c9\u30eb\u3082\u3042\u308a\u307e\u3059\u3002',
+        },
+        {
+          q: '\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u5909\u66f4\u3084\u30ad\u30e3\u30f3\u30bb\u30eb\u306f\u3067\u304d\u307e\u3059\u304b\uff1f',
+          a: '\u306f\u3044\u3002\u30bb\u30c3\u30b7\u30e7\u30f3\u958b\u59cb\u306e12\u6642\u9593\u524d\u307e\u3067\u7121\u6599\u3067\u5909\u66f4\u53ef\u80fd\u3067\u3059\u300224\u6642\u9593\u524d\u307e\u3067\u306e\u30ad\u30e3\u30f3\u30bb\u30eb\u306f\u5168\u984d\u8fd4\u91d1\u5bfe\u8c61\u3068\u306a\u308a\u307e\u3059\u300224\u6642\u9593\u4ee5\u5185\u306e\u30ad\u30e3\u30f3\u30bb\u30eb\u306b\u3064\u3044\u3066\u306f\u3001\u30b5\u30dd\u30fc\u30c8\u30c1\u30fc\u30e0\u306b\u3054\u9023\u7d61\u304f\u3060\u3055\u3044\u3002\u3067\u304d\u308b\u9650\u308a\u5bfe\u5fdc\u3044\u305f\u3057\u307e\u3059\u3002',
+        },
+        {
+          q: '\u3069\u306e\u30b9\u30ad\u30eb\u30ec\u30d9\u30eb\u3067\u3082\u5229\u7528\u3067\u304d\u307e\u3059\u304b\uff1f',
+          a: '\u521d\u5fc3\u8005\u304b\u3089\u4e0a\u7d1a\u8005\u307e\u3067\u3001\u3059\u3079\u3066\u306e\u30b9\u30ad\u30eb\u30ec\u30d9\u30eb\u306e\u65b9\u3092\u6b53\u8fce\u3057\u307e\u3059\u3002\u30b3\u30fc\u30c1\u306f\u304a\u5ba2\u69d8\u306e\u73fe\u5728\u306e\u5b9f\u529b\u3068\u76ee\u6a19\u306b\u5408\u308f\u305b\u3066\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u8abf\u6574\u3057\u307e\u3059\u3002\u6700\u4f4e\u30e9\u30f3\u30af\u3084\u7d4c\u9a13\u306e\u6761\u4ef6\u306f\u3042\u308a\u307e\u305b\u3093\u3002',
+        },
+        {
+          q: '\u30b3\u30fc\u30c1\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u6e96\u5099\u306f\u4f55\u304c\u5fc5\u8981\u3067\u3059\u304b\uff1f',
+          a: 'Discord\u3092\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u3057\u3001\u30b2\u30fc\u30e0\u3092\u30d7\u30ec\u30a4\u3067\u304d\u308b\u72b6\u614b\u306b\u3057\u3066\u304a\u3044\u3066\u304f\u3060\u3055\u3044\u3002VOD\u30ec\u30d3\u30e5\u30fc\u3092\u8cfc\u5165\u3055\u308c\u305f\u5834\u5408\u306f\u3001\u30ea\u30d7\u30ec\u30a4\u30d5\u30a1\u30a4\u30eb\u307e\u305f\u306f\u52d5\u753b\u30ea\u30f3\u30af\u3092\u3054\u7528\u610f\u304f\u3060\u3055\u3044\u3002\u6539\u5584\u3057\u305f\u3044\u5177\u4f53\u7684\u306a\u9818\u57df\uff08\u30a8\u30a4\u30e0\u3001\u30dd\u30b8\u30b7\u30e7\u30cb\u30f3\u30b0\u3001\u610f\u601d\u6c7a\u5b9a\u306a\u3069\uff09\u3092\u8003\u3048\u3066\u304a\u304f\u3068\u3001\u30bb\u30c3\u30b7\u30e7\u30f3\u304c\u3088\u308a\u52b9\u679c\u7684\u306b\u306a\u308a\u307e\u3059\u3002',
+        },
+        {
+          q: '\u30b3\u30fc\u30c1\u306f\u8a8d\u5b9a\u6e08\u307f\u3067\u3059\u304b\uff1f',
+          a: '\u306f\u3044\u3002GameSensei\u306e\u3059\u3079\u3066\u306e\u30b3\u30fc\u30c1\u306f\u53b3\u683c\u306a\u5be9\u67fb\u30d7\u30ed\u30bb\u30b9\u3092\u901a\u904e\u3057\u3066\u3044\u307e\u3059\u3002\u30b2\u30fc\u30e0\u5185\u30e9\u30f3\u30af\uff08\u30c0\u30a4\u30e4\u30e2\u30f3\u30c9\u4ee5\u4e0a\u307e\u305f\u306f\u540c\u7b49\uff09\u3001\u7af6\u6280\u7d4c\u9a13\u3001\u30b3\u30fc\u30c1\u30f3\u30b0\u80fd\u529b\u3092\u78ba\u8a8d\u3057\u3066\u3044\u307e\u3059\u3002\u751f\u5f92\u304b\u3089\u306e\u30ec\u30d3\u30e5\u30fc\u3082\u7d99\u7d9a\u7684\u306b\u53ce\u96c6\u3057\u3001\u6700\u4f4e4.5\u661f\u306e\u8a55\u4fa1\u3092\u7dad\u6301\u3059\u308b\u3053\u3068\u304c\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u306b\u7559\u307e\u308b\u6761\u4ef6\u3067\u3059\u3002',
+        },
+        {
+          q: '\u3069\u306e\u652f\u6255\u3044\u65b9\u6cd5\u306b\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u3059\u304b\uff1f',
+          a: '\u4e3b\u8981\u306a\u30af\u30ec\u30b8\u30c3\u30c8\u30ab\u30fc\u30c9\u30fb\u30c7\u30d3\u30c3\u30c8\u30ab\u30fc\u30c9\uff08Visa\u3001Mastercard\u3001American Express\uff09\u304a\u3088\u3073PayPal\u306b\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u3059\u3002\u3059\u3079\u3066\u306e\u53d6\u5f15\u306f\u5b89\u5168\u306a\u6697\u53f7\u5316\u3055\u308c\u305f\u6c7a\u6e08\u30b7\u30b9\u30c6\u30e0\u3067\u51e6\u7406\u3055\u308c\u307e\u3059\u3002\u4fa1\u683c\u306fUSD\u3068JPY\u3067\u8868\u793a\u3055\u308c\u307e\u3059\u3002',
+        },
+        {
+          q: '\u8fd4\u91d1\u306f\u3067\u304d\u307e\u3059\u304b\uff1f',
+          a: '\u306f\u3044\u3002\u30b3\u30fc\u30c1\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u304c\u307e\u3060\u63d0\u4f9b\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u3001\u5168\u984d\u8fd4\u91d1\u306e\u5bfe\u8c61\u3068\u306a\u308a\u307e\u3059\u3002\u5b8c\u4e86\u3057\u305f\u30bb\u30c3\u30b7\u30e7\u30f3\u306b\u4e0d\u6e80\u304c\u3042\u308b\u5834\u5408\u306f\u300148\u6642\u9593\u4ee5\u5185\u306b\u3054\u9023\u7d61\u3044\u305f\u3060\u3051\u308c\u3070\u5bfe\u5fdc\u3044\u305f\u3057\u307e\u3059\u3002\u8a73\u7d30\u306f\u8fd4\u91d1\u30dd\u30ea\u30b7\u30fc\u3092\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002',
+        },
+        {
+          q: '\u30b3\u30fc\u30c1\u3092\u81ea\u5206\u3067\u9078\u3079\u307e\u3059\u304b\uff1f',
+          a: '\u306f\u3044\uff01\u5404\u30b2\u30fc\u30e0\u30da\u30fc\u30b8\u3067\u30b3\u30fc\u30c1\u306e\u30d7\u30ed\u30d5\u30a3\u30fc\u30eb\u3092\u95b2\u89a7\u3057\u3001\u30e9\u30f3\u30af\u3001\u5c02\u9580\u5206\u91ce\u3001\u30ec\u30d3\u30e5\u30fc\u3001\u5bfe\u5fdc\u53ef\u80fd\u6642\u9593\u3092\u78ba\u8a8d\u3057\u3066\u3001\u6700\u9069\u306a\u30b3\u30fc\u30c1\u3092\u9078\u3076\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u8ff7\u3063\u305f\u5834\u5408\u306f\u3001\u30b5\u30dd\u30fc\u30c8\u30c1\u30fc\u30e0\u304c\u76ee\u6a19\u3084\u30d7\u30ec\u30a4\u30b9\u30bf\u30a4\u30eb\u306b\u5408\u3063\u305f\u30b3\u30fc\u30c1\u3092\u304a\u3059\u3059\u3081\u3057\u307e\u3059\u3002',
+        },
+        {
+          q: '\u30c1\u30fc\u30e0\u3084\u30b0\u30eb\u30fc\u30d7\u30b3\u30fc\u30c1\u30f3\u30b0\u306f\u3042\u308a\u307e\u3059\u304b\uff1f',
+          a: '\u306f\u3044\u30012\uff5e5\u4eba\u306e\u30c1\u30fc\u30e0\u5411\u3051\u30b0\u30eb\u30fc\u30d7\u30b3\u30fc\u30c1\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u63d0\u4f9b\u3057\u3066\u3044\u307e\u3059\u3002\u30c1\u30fc\u30e0\u30bb\u30c3\u30b7\u30e7\u30f3\u3067\u306f\u30b3\u30df\u30e5\u30cb\u30b1\u30fc\u30b7\u30e7\u30f3\u3001\u9023\u643a\u3001\u6226\u7565\u3001\u30c1\u30fc\u30e0\u30d9\u30fc\u30b9\u306e\u30e1\u30ab\u30cb\u30af\u30b9\u306b\u7126\u70b9\u3092\u5f53\u3066\u307e\u3059\u3002\u30b0\u30eb\u30fc\u30d7\u6599\u91d1\u3082\u3054\u7528\u610f\u3057\u3066\u3044\u307e\u3059\u2014\u5404\u30b2\u30fc\u30e0\u30da\u30fc\u30b8\u306e\u30c1\u30fc\u30e0\u30b3\u30fc\u30c1\u30f3\u30b0\u30d1\u30c3\u30b1\u30fc\u30b8\u3092\u3054\u78ba\u8a8d\u3044\u305f\u3060\u304f\u304b\u3001\u304a\u554f\u3044\u5408\u308f\u305b\u304f\u3060\u3055\u3044\u3002',
+        },
+      ],
     },
   },
 } as const;

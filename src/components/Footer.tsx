@@ -54,7 +54,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/contact" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.contactUs}</Link></li>
               <li><Link href="/#how-it-works" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.howItWorks}</Link></li>
-              <li><Link href="/coming-soon/faq" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.faq}</Link></li>
+              <li><Link href="/faq" className="text-text-secondary hover:text-accent text-sm transition-colors">{t.footer.faq}</Link></li>
             </ul>
           </div>
 
