@@ -4,3 +4,40 @@
 
 html { scroll-behavior: smooth; }
 body { @apply bg-bg text-text-primary; }
+
+/* Print styles for receipt */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #receipt, #receipt * {
+    visibility: visible;
+  }
+  #receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 40px !important;
+  }
+  #receipt .receipt-title,
+  #receipt .receipt-heading,
+  #receipt .receipt-text,
+  #receipt .receipt-total {
+    color: #111 !important;
+  }
+  #receipt .receipt-company,
+  #receipt .receipt-address {
+    color: #666 !important;
+  }
+  #receipt .receipt-badge {
+    background: #d1fae5 !important;
+    color: #065f46 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

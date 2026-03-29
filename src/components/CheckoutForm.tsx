@@ -3,14 +3,25 @@
 import { useState } from 'react';
 import { useLanguage } from '@/lib/language';
 import { useCurrency } from '@/lib/currency';
-import { useCart } from '@/lib/cart';
+import { useCart, CartItem } from '@/lib/cart';
 import { useAuth } from '@/lib/auth';
+import Receipt from './Receipt';
 
-export default function CheckoutForm() {
-  const { t } = useLanguage();
+const TEST_CARD_SUCCESS = '4242424242424242';
+const TEST_CARD_DECLINE = '4000000000000002';
+
+export default function CheckoutForm({ onOrderComplete }: { onOrderComplete?: () => void }) {
+  const { language, t } = useLanguage();
   const { formatPrice } = useCurrency();
   const { items, totalPriceUSD, clearCart } = useCart();
   const { user } = useAuth();
+
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [paymentFailed, setPaymentFailed] = useState(false);
+  const [orderRef, setOrderRef] = useState('');
+  const [orderDate, setOrderDate] = useState('');
+  const [savedItems, setSavedItems] = useState<CartItem[]>([]);
+  const [savedTotal, setSavedTotal] = useState(0);
 
   const [name, setName] = useState(user?.name ?? '');
   const [email, setEmail] = useState(user?.email ?? '');
@@ -20,25 +31,67 @@ export default function CheckoutForm() {
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvv, setCvv] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [orderRef, setOrderRef] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const ref = 'GS-' + Date.now().toString(36).toUpperCase();
+
+    const strippedCard = cardNumber.replace(/\s/g, '');
+
+    if (strippedCard === TEST_CARD_DECLINE) {
+      setPaymentFailed(true);
+      return;
+    }
+
+    const ref = 'GS-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+    const date = new Date().toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    setSavedItems([...items]);
+    setSavedTotal(totalPriceUSD);
     setOrderRef(ref);
-    setSuccess(true);
+    setOrderDate(date);
+    setOrderPlaced(true);
+    onOrderComplete?.();
     clearCart();
   };
 
-  if (success) {
+  if (orderPlaced) {
     return (
-      <div className="bg-surface border border-accent/30 rounded-lg p-8 text-center">
-        <svg className="w-16 h-16 text-accent mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        <p className="text-text-primary text-lg font-bold mb-2">{t.checkout.success}</p>
-        <p className="text-text-secondary text-sm">
-          {t.checkout.orderRef}: <span className="text-accent font-mono">{orderRef}</span>
-        </p>
+      <Receipt
+        orderRef={orderRef}
+        orderDate={orderDate}
+        customerName={name}
+        customerEmail={email}
+        items={savedItems.map(item => ({
+          name: language === 'ja' ? item.serviceNameJa : item.serviceName,
+          gameName: language === 'ja' ? item.gameNameJa : item.gameName,
+          quantity: item.quantity,
+          unitPriceUSD: item.priceUSD,
+        }))}
+        totalUSD={savedTotal}
+        paymentMethod={paymentTab}
+        siteName="Game Sensei"
+      />
+    );
+  }
+
+  if (paymentFailed) {
+    return (
+      <div className="text-center py-16 max-w-lg mx-auto">
+        <span className="text-5xl mb-4 block">❌</span>
+        <h2 className="text-2xl font-bold text-red-400 mb-2">{t.receipt.paymentDeclined}</h2>
+        <p className="text-text-secondary mb-6">{t.receipt.paymentDeclinedMessage}</p>
+        <button
+          onClick={() => setPaymentFailed(false)}
+          className="px-6 py-3 bg-accent hover:bg-accent/90 text-white font-bold rounded-lg transition-colors"
+        >
+          {t.receipt.tryAgain}
+        </button>
       </div>
     );
   }
@@ -95,6 +148,7 @@ export default function CheckoutForm() {
             <div>
               <label className="block text-text-secondary text-sm mb-1">{t.checkout.cardNumber}</label>
               <input type="text" value={cardNumber} onChange={e => setCardNumber(e.target.value)} placeholder="4242 4242 4242 4242" className="w-full bg-surface-elevated border border-border rounded-lg px-4 py-2.5 text-text-primary text-sm focus:outline-none focus:border-accent transition-colors" />
+              <p className="text-xs text-text-muted mt-1">{t.receipt.testCards}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
