@@ -26,29 +26,36 @@ export default function HeroBanner() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
-  // Search games and services
+  // Search games and services — match any word in the query
   const getResults = () => {
     if (!query.trim()) return [];
-    const q = query.toLowerCase();
-    const results: { type: 'game' | 'service'; game: typeof games[0]; service?: typeof games[0]['services'][0] }[] = [];
+    const words = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+    if (words.length === 0) return [];
+    const results: { type: 'game' | 'service'; game: typeof games[0]; service?: typeof games[0]['services'][0]; score: number }[] = [];
 
     for (const game of games) {
-      const gameName = language === 'ja' ? game.nameJa : game.name;
-      const gameDesc = language === 'ja' ? game.descriptionJa : game.description;
+      const gameName = (language === 'ja' ? game.nameJa : game.name).toLowerCase();
+      const gameDesc = (language === 'ja' ? game.descriptionJa : game.description).toLowerCase();
+      const gameText = gameName + ' ' + gameDesc;
 
-      if (gameName.toLowerCase().includes(q) || gameDesc.toLowerCase().includes(q)) {
-        results.push({ type: 'game', game });
+      const matchCount = words.filter(w => gameText.includes(w)).length;
+      if (matchCount > 0) {
+        results.push({ type: 'game', game, score: matchCount });
       }
 
       for (const service of game.services) {
-        const sName = language === 'ja' ? service.nameJa : service.name;
-        const sDesc = language === 'ja' ? service.descriptionJa : service.description;
-        if (sName.toLowerCase().includes(q) || sDesc.toLowerCase().includes(q)) {
-          results.push({ type: 'service', game, service });
+        const sName = (language === 'ja' ? service.nameJa : service.name).toLowerCase();
+        const sDesc = (language === 'ja' ? service.descriptionJa : service.description).toLowerCase();
+        const serviceText = gameName + ' ' + sName + ' ' + sDesc;
+
+        const sMatchCount = words.filter(w => serviceText.includes(w)).length;
+        if (sMatchCount > 0) {
+          results.push({ type: 'service', game, service, score: sMatchCount });
         }
       }
     }
 
+    results.sort((a, b) => b.score - a.score);
     return results.slice(0, 8);
   };
 
