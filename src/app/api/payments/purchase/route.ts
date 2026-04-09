@@ -32,11 +32,14 @@ export async function POST(req: NextRequest) {
 
     const txnRef = 'GS-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7).toUpperCase()
 
+    // Amount in cents (smallest unit) as string — e.g. $68.97 → "6897"
+    const amountCents = String(Math.round(amountUSD * 100))
+
     const payload = {
       merchant_id: process.env.PAYMENTOPTIONS_MERCHANT_ID!,
       merchant_txn_ref: txnRef,
       currency: 'USD',
-      amount: String(amountUSD),
+      amount: amountCents,
       card: {
         cvc: cvv,
         expiry_month: expiryMonth,
@@ -75,7 +78,14 @@ export async function POST(req: NextRequest) {
 
     const data = await response.json()
 
-    // Payment approved
+    console.log('[GameSensei Purchase] API response:', JSON.stringify(data))
+
+    // 3DS redirect — check BEFORE success since 3DS responses can also have success:true
+    if (data.redirect_url) {
+      return NextResponse.json({ redirect: data.redirect_url, ref: txnRef })
+    }
+
+    // Payment approved (non-3DS frictionless success)
     if (data.success === true) {
       return NextResponse.json({
         success: true,
@@ -84,18 +94,16 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // 3DS challenge redirect
-    if (data.redirect_url) {
-      return NextResponse.json({ redirect: data.redirect_url, ref: txnRef })
-    }
+    // Declined or error
+    const message = data.gateway_response?.message
+      || data.message
+      || data.error
+      || 'Payment declined'
 
-    // Declined
+    console.error('[GameSensei Purchase] Declined/error:', JSON.stringify(data))
+
     return NextResponse.json(
-      {
-        success: false,
-        ref: txnRef,
-        message: data.gateway_response?.message || 'Payment declined',
-      },
+      { success: false, ref: txnRef, message },
       { status: 400 }
     )
   } catch (err) {
