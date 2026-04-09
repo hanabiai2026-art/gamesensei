@@ -87,6 +87,13 @@ export const translations = {
       total: 'Total',
       success: 'Order confirmed! Check your email for session details and scheduling info.',
       orderRef: 'Order Reference',
+      billingCountry: 'Billing Country',
+    },
+    payment: {
+      processing: 'Processing payment...',
+      successTitle: 'Payment Successful!',
+      successMessage: 'Your session is confirmed. Check your email for scheduling details.',
+      errorGeneric: 'Something went wrong. Please try again.',
     },
     auth: {
       logIn: 'Log In',
@@ -360,6 +367,13 @@ export const translations = {
       total: '\u5408\u8a08',
       success: '\u3054\u6ce8\u6587\u304c\u78ba\u5b9a\u3057\u307e\u3057\u305f\uff01\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u8a73\u7d30\u3068\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u60c5\u5831\u306f\u30e1\u30fc\u30eb\u3092\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002',
       orderRef: '\u6ce8\u6587\u756a\u53f7',
+      billingCountry: '\u8acb\u6c42\u5148\u306e\u56fd',
+    },
+    payment: {
+      processing: '\u6c7a\u6e08\u51e6\u7406\u4e2d...',
+      successTitle: '\u304a\u652f\u6255\u3044\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\uff01',
+      successMessage: '\u30b3\u30fc\u30c1\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u304c\u78ba\u5b9a\u3057\u307e\u3057\u305f\u3002\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u8a73\u7d30\u306f\u30e1\u30fc\u30eb\u3067\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002',
+      errorGeneric: '\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002',
     },
     auth: {
       logIn: '\u30ed\u30b0\u30a4\u30f3',
